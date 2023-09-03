@@ -13,7 +13,8 @@ folder_with_txt_and_img = glob.glob(r"D:\\path_to_folder\*.jpg")
 # Drop there a folder path where to save a sorted data
 destination_folder = fr'C:\path_to_folder\\destination_folder'
 
-img_format = ".jpg"
+original_img_format = ".jpg"
+img_format_to_save = ".jpg"
 label_format = ".txt"
 
 # Cropping settings,
@@ -32,7 +33,7 @@ for img_path in folder_with_txt_and_img:
     original_shape = image.shape  # h, w format
 
     head, tail = os.path.split(img_path)
-    file_name_str = str(tail.split(img_format)[0])
+    file_name_str = str(tail.split(original_img_format)[0])
 
     image_cropped = image[crop_y_from:crop_y_to, crop_x_from:crop_x_to].copy()
 
@@ -40,7 +41,7 @@ for img_path in folder_with_txt_and_img:
 
     image_height, image_width, _ = cropped_shape
 
-    path_to_txt = img_path.replace(img_format, label_format)
+    path_to_txt = img_path.replace(original_img_format, label_format)
     if not os.path.exists(path_to_txt):
         continue
 
@@ -72,7 +73,7 @@ for img_path in folder_with_txt_and_img:
 
         str_annotation += f"0 {round(center_x_roi / rect_w, 6)} {round(center_y_roi / rect_h, 6)} {round(rect_w / rect_w, 6)} {round(rect_h / rect_h, 6)}\n0"
 
-    path_to_full_box_plot_png = f"{destination_folder}/{file_name_str}.{img_format}"
+    path_to_full_box_plot_png = f"{destination_folder}/{file_name_str}.{img_format_to_save}"
     path_to_full_box_plot_txt = f"{destination_folder}/{file_name_str}.{label_format}"
 
     cv2.imwrite(path_to_full_box_plot_png, image_cropped)
