@@ -40,8 +40,13 @@ During the cropping process, you might want to verify the accuracy of the update
 To facilitate this, you can enable the option in the script. 
 
     DEBUG_VISUALIZE 
+  
+##  
+###Cropping Not Labeled Data
+If you need to crop non labeled data while maintaining label consistency, 
+you can use the crop_img.py script. This script, performs image cropping and save to destination folder.
 
-This visualization mode helps you inspect the modified labels and confirm their correctness.
+
 ##
 ###Cleaning Unlabeled Images
 To clean up your dataset directory by removing images that are not labeled, 
