@@ -45,7 +45,7 @@ To facilitate this, you can enable the option in the script.
 ###Cropping Not Labeled Data
 If you need to crop non labeled data while maintaining label consistency, 
 you can use the crop_img.py script. This script, performs image cropping and save to destination folder.
-
+ 
 
 ##
 ###Cleaning Unlabeled Images
